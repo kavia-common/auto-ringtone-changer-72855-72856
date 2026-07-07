@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Auto Ringtone Changer</string>
+
+    <string name="screen_title">Auto Ringtone Changer</string>
+    <string name="screen_subtitle">Randomly change your ringtone after a phone call ends.</string>
+
+    <string name="setting_enabled_title">Enabled</string>
+    <string name="setting_enabled_desc">When enabled, the app will attempt to detect call ends and set a new ringtone.</string>
+
+    <string name="setting_mode_title">Ringtone selection</string>
+    <string name="setting_mode_desc">Choose how the ringtone is selected when a call ends.</string>
+    <string name="ringtone_mode_random">Random ringtone</string>
+    <string name="ringtone_mode_system_default_only">Keep current ringtone</string>
+
+    <string name="setting_permissions_title">Permissions</string>
+    <string name="setting_permissions_desc">Required so Android can detect call state and allow changing the system ringtone.</string>
+
+    <string name="button_grant_runtime_permissions">Grant phone &amp; call log permissions</string>
+    <string name="button_grant_write_settings">Allow changing system settings</string>
+
+    <string name="setting_status_title">Status</string>
+    <string name="status_enabled">Service: Enabled</string>
+    <string name="status_disabled">Service: Disabled</string>
+    <string name="status_permissions">Permissions — Phone: %1$s, Call log: %2$s, Write settings: %3$s</string>
+    <string name="status_mode">Mode: %1$s</string>
+    <string name="status_missing_requirements">Missing requirements: call-end detection and ringtone changes will not run until all permissions are granted.</string>
+
+    <string name="footer_note">Note: On some Android versions, call-end detection may be delayed and depends on system restrictions.</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      We need to listen for phone state changes and observe call log changes to infer
+      when a call ends across OS versions. (Call log observation can work without
+      privileged telephony callbacks.)
+    -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+
+    <!--
+      NOTE: We do NOT declare android.permission.WRITE_SETTINGS because it's a protected
+      permission and lint fails builds for regular apps. Instead we rely on the user
+      granting "Modify system settings" access via ACTION_MANAGE_WRITE_SETTINGS and
+      check Settings.System.canWrite(...) at runtime.
+    -->
+
+    <application
+        android:label="@string/app_name"
+        android:exported="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Receives telephony state changes (ringing/offhook/idle). -->
+        <receiver
+            android:name=".telephony.PhoneStateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Ensure we re-arm the call-log observer after reboot. -->
+        <receiver
+            android:name=".telephony.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>
